@@ -1,6 +1,12 @@
+import moment from "moment/moment";
 import Countdown from "react-countdown";
 
-const Counter = () => {
+const Counter = ({ deadline }) => {
+  const deadlineTimestamp = moment(Date.parse(deadline));
+  const currentTimestamp = moment(Date.now());
+  // const timeDiff = currentTimestamp.diff(deadlineTimestamp);
+  const timeDiff = deadlineTimestamp.diff(currentTimestamp);
+
   const renderer = ({ days, hours, minutes, seconds, completed }) => {
     if (completed) {
       // Render a completed state
@@ -24,10 +30,18 @@ const Counter = () => {
     }
   };
 
+  const handleComplete = () => {
+    console.log("hi");
+  };
+
   return (
     <div>
       {" "}
-      <Countdown date={Date.now() + 500000} renderer={renderer} />
+      <Countdown
+        date={Date.now() + timeDiff}
+        renderer={renderer}
+        onComplete={handleComplete}
+      />
     </div>
   );
 };

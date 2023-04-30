@@ -1,8 +1,11 @@
 import "boxicons";
 import React from "react";
+import { useGetDeadlineQuery } from "../api/apiSlice";
 import Counter from "./Counter";
 
 export default function Navbar() {
+  const { data: deadline, isLoading, isError } = useGetDeadlineQuery();
+
   return (
     <header className="bg-blue-400 pb-2 shadow-md rounded-b-md">
       <div>
@@ -23,7 +26,8 @@ export default function Navbar() {
             </a>
           </div>
           <div className="submission_deadline">
-            <span className="font-bold"> Deadline: </span> <Counter />
+            <span className="font-bold"> Deadline: </span>{" "}
+            {!isLoading && !isError && <Counter deadline={deadline.deadline} />}
           </div>
         </div>
       </nav>

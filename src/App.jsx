@@ -1,5 +1,7 @@
 import { useFormik } from "formik";
-import { useEffect, useReducer } from "react";
+import _ from "lodash";
+import { useEffect, useState } from "react";
+import { useGetQuizzesQuery } from "./api/apiSlice";
 import CourseDetails from "./components/CourseDetails";
 import Footer from "./components/Footer";
 import Navbar from "./components/Navbar";
@@ -7,18 +9,10 @@ import Quizzes from "./components/Quizzes";
 import Terms from "./components/Terms";
 import UserForm from "./components/UserForm";
 
-const reducer = (state, action) => {
-  switch (action.type) {
-    case "mod":
-      return state;
-    case "check":
-      return state;
-    default:
-      return state;
-  }
-};
-
 function App() {
+  const [show, setShow] = useState(false);
+  const { data: quizzes, isLoading, isError, error } = useGetQuizzesQuery();
+
   const formik = useFormik({
     initialValues: {
       name: "",
@@ -35,12 +29,21 @@ function App() {
     },
   });
 
-  const [res, dispatch] = useReducer(reducer, formik.values);
+  // Initialize form data using Api Response
+  const initializeState = (quizzes) => {
+    const modQuizzes = _.cloneDeep(quizzes);
+    modQuizzes.map((quiz) => (quiz.isSelected = false));
+    formik.values.quizzes = modQuizzes;
+    setShow(true);
+  };
 
   useEffect(() => {
-    // formik.values.quizzes = [{ name: "Shnato" }];
-    dispatch({ type: "mod" });
-  }, [formik]);
+    if (!isLoading && !isError) {
+      initializeState(quizzes);
+    }
+  }, [isLoading, quizzes, isError]);
+
+  useEffect(() => {}, [formik.values.quizzes]);
 
   return (
     <div>
@@ -63,7 +66,7 @@ function App() {
           </section>
           <section className="quizzes mt-3">
             <h1 className="text-lg text-center font-bold">Quiz</h1>
-            <Quizzes />
+            {show && <Quizzes quizzes={formik.values.quizzes} />}
           </section>
           <section className="terms-and-conditions mt-3 ">
             <h1 className="text-lg text-center font-bold">

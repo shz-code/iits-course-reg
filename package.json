@@ -13,6 +13,7 @@
     "boxicons": "^2.1.4",
     "eslint": "^8.38.0",
     "formik": "^2.2.9",
+    "lodash": "^4.17.21",
     "lucide-react": "^0.188.0",
     "moment": "^2.29.4",
     "react": "^18.2.0",
