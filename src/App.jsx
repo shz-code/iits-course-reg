@@ -1,5 +1,6 @@
 import { useFormik } from "formik";
 import { useEffect, useReducer } from "react";
+import CourseDetails from "./components/CourseDetails";
 import Footer from "./components/Footer";
 import Navbar from "./components/Navbar";
 import Quizzes from "./components/Quizzes";
@@ -24,6 +25,7 @@ function App() {
       email: "",
       id: "",
       phone: "",
+      reason: "",
       quizzes: [],
       tc: false,
     },
@@ -43,12 +45,20 @@ function App() {
   return (
     <div>
       <Navbar />
-      <div className="main py-4 px-2 md:max-w-[900px] mx-auto">
+      <div className="main py-4 px-2 md:max-w-[900px] mx-auto ">
+        <div className="bg-rose-100 rounded-md text-center">
+          <p className="font-bold font-mono mb-2 py-4 w-3/4 mx-auto">
+            Fill up the form within deadline for primary registration. Once the
+            deadline is finished you can not apply for registration.
+          </p>
+        </div>
+        <section className="meta-information">
+          <h1 className="text-lg text-center font-bold">About This Course</h1>
+          <CourseDetails />
+        </section>
         <form onSubmit={formik.handleSubmit}>
-          <section className="user-registration">
-            <h1 className="text-lg text-center font-bold">
-              Register within time
-            </h1>
+          <section className="user-registration mt-3">
+            <h1 className="text-lg text-center font-bold">User Information</h1>
             <UserForm formik={formik} />
           </section>
           <section className="quizzes mt-3">

@@ -1,8 +1,10 @@
 import { Fingerprint, Mail, Phone, User } from "lucide-react";
 import React from "react";
 import InputElement from "./InputElement";
+import TextAreaElement from "./TextAreaElement";
 
 const UserForm = ({ formik }) => {
+  console.log();
   return (
     <>
       <div className="student-info">
@@ -39,6 +41,12 @@ const UserForm = ({ formik }) => {
           placeholder="Enter Your Number"
           type="text"
           {...formik.getFieldProps("phone")}
+        />
+        <TextAreaElement
+          label="Why do you want to do this course? (200 letters)"
+          placeholder="Write why you want to do this course in 200 letters"
+          wordCount={formik.values?.reason.length}
+          {...formik.getFieldProps("reason")}
         />
       </div>
     </>

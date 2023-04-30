@@ -4,11 +4,11 @@ import Counter from "./Counter";
 
 export default function Navbar() {
   return (
-    <header className="bg-blue-400 py-2 shadow-md rounded-b-md">
+    <header className="bg-blue-400 pb-2 shadow-md rounded-b-md">
       <div>
-        <div className="page_title font-bold font-mono text-lg flex items-center justify-center gap-1">
+        <div className="page_title bg-blue-500 shadow-sm mb-1 py-1 font-bold font-mono text-lg flex items-center justify-center gap-1">
           Front-end development with
-          <box-icon type="logo" name="javascript"></box-icon>
+          <box-icon type="logo" color="yellow" name="javascript"></box-icon>
         </div>
       </div>
       <nav className="md:container mx-auto">
@@ -23,7 +23,7 @@ export default function Navbar() {
             </a>
           </div>
           <div className="submission_deadline">
-            <Counter />
+            <span className="font-bold"> Deadline: </span> <Counter />
           </div>
         </div>
       </nav>

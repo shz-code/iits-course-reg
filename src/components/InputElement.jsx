@@ -2,11 +2,11 @@ import React from "react";
 
 const InputElement = ({ icon, label, ...rest }) => {
   return (
-    <div className="input-group my-1">
-      <label htmlFor={label} className="block mb-2 text-sm">
+    <div className="input-group my-2">
+      <label htmlFor={label} className="mb-2 text-sm cursor-pointer">
         {label}
       </label>
-      <div className="relative shadow-sm">
+      <div className="relative shadow-sm mt-1">
         <div className="absolute inset-y-0 left-0 flex items-center px-2 pointer-events-none bg-blue-950 rounded-s-md">
           {icon}
         </div>
