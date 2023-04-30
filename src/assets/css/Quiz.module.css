@@ -1,0 +1,7 @@
+.quizOption input {
+    display: none;
+}
+
+.quizOption label:has(input:checked) {
+    background: #172554;
+}
