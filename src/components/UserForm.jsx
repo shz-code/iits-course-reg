@@ -32,8 +32,8 @@ const UserForm = ({ formik }) => {
           label="Your Id"
           placeholder="Enter Your Id"
           type="number"
-          min={18000000}
-          max={23300000}
+          min={17103001}
+          max={23103456}
           {...formik.getFieldProps("id")}
         />
         <InputElement
@@ -44,11 +44,14 @@ const UserForm = ({ formik }) => {
           {...formik.getFieldProps("phone")}
         />
         <TextAreaElement
-          label="Why do you want to do this course? (200 letters)"
-          placeholder="Write why you want to do this course in 200 letters"
+          label="Why do you want to do this course? (200 characters)"
+          placeholder="Write why you want to do this course in 200 characters"
           wordCount={formik.values?.reason.length}
           {...formik.getFieldProps("reason")}
         />
+        <p className="text-red-500 font-bold my-2 text-center">
+          {formik.errors?.reason}
+        </p>
       </div>
     </>
   );

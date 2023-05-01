@@ -15,7 +15,7 @@ export default function Navbar() {
           <box-icon type="logo" color="yellow" name="javascript"></box-icon>
         </div>
       </div>
-      <nav className="md:container mx-auto">
+      <nav className="md:max-w-[1200px] mx-auto px-2">
         <div className="md:flex md:justify-between text-center md:items-center">
           <div className="logo hidden md:block">
             <a href="http://cse.iubat.edu/" target="_blank">

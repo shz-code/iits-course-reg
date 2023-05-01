@@ -79,6 +79,9 @@ const Quizzes = ({ formik }) => {
             {content}
           </quizContext.Provider>
         </div>
+        <p className="text-red-500 font-bold my-2 text-center">
+          {formik.errors?.quizzes}
+        </p>
       </div>
     </>
   );

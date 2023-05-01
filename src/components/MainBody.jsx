@@ -1,5 +1,6 @@
 import { useFormik } from "formik";
-import { toast } from "react-hot-toast";
+import { useSelector } from "react-redux";
+import formValidation from "../utils/formValidation";
 import CourseDetails from "./CourseDetails";
 import Quizzes from "./Quizzes";
 import Terms from "./Terms";
@@ -7,6 +8,8 @@ import UserForm from "./UserForm";
 import Button from "./ui/Button";
 
 const MainBody = () => {
+  const { finished } = useSelector((state) => state.submitValidation);
+
   const formik = useFormik({
     initialValues: {
       name: "",
@@ -17,30 +20,9 @@ const MainBody = () => {
       quizzes: [],
       tc: false,
     },
-    validate: (values) => {
-      const errors = {};
-      const { name, email, id, phone, reason, quizzes, tc } = values;
-
-      // Validate if user has answered all the quizzes
-      let quizSelectStatus = [];
-      quizzes.map((quiz) => {
-        const { options } = quiz;
-        let selected = false;
-        // Check if any quiz has problem
-        options.filter((option) => {
-          if (option.isSelected === true) selected = true;
-        });
-        // If any quiz is not answered push to quizSelectStatus
-        if (!selected) quizSelectStatus.push("fault");
-      });
-      // Check if all quizzes are answered or not
-      const flag = quizSelectStatus.find((state) => state === "fault");
-      if (flag === "fault") {
-        toast.error("Please answer all the quizzes");
-        errors.quizzes = "Not all quizzes are selected";
-      }
-      return errors;
-    },
+    validateOnChange: false,
+    validateOnBlur: false,
+    validate: formValidation,
     onSubmit: (values) => {
       console.log(values);
     },
@@ -63,22 +45,27 @@ const MainBody = () => {
       <section className="meta-information">
         <CourseDetails />
       </section>
-      <form onSubmit={formik.handleSubmit}>
-        <section className="user-registration">
-          <UserForm formik={formik} />
-        </section>
-        <section className="quizzes mt-3">
-          <Quizzes formik={formik} />
-          <p className="text-red-500 font-bold my-2 text-center">
-            {formik.errors?.quizzes}
-          </p>
-        </section>
-        <section className="terms-and-conditions">
-          <Terms formik={formik} />
-        </section>
-        <Button isValid />
-        {/* isValid={isValidCheck()} isLoading={false} */}
-      </form>
+      {!finished ? (
+        <form onSubmit={formik.handleSubmit}>
+          <section className="user-registration">
+            <UserForm formik={formik} />
+          </section>
+          <section className="quizzes mt-3">
+            <Quizzes formik={formik} />
+          </section>
+          <section className="terms-and-conditions">
+            <Terms formik={formik} />
+          </section>
+          <Button isValid />
+          {/* isValid={isValidCheck()} isLoading={false} */}
+        </form>
+      ) : (
+        <p className="bg-red-500 text-white p-3 rounded-md text-center">
+          Registration deadline already finished. <br />
+          Contact with department for any consultation. <br />
+          Thanks for your co-operation.
+        </p>
+      )}
     </div>
   );
 };

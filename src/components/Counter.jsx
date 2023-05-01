@@ -1,7 +1,11 @@
 import moment from "moment/moment";
 import Countdown from "react-countdown";
+import { useDispatch } from "react-redux";
+import { setFinished } from "../features/submitValidation/submitValidationSlice";
 
 const Counter = ({ deadline }) => {
+  const dispatch = useDispatch();
+
   const deadlineTimestamp = moment(Date.parse(deadline));
   const currentTimestamp = moment(Date.now());
   // const timeDiff = currentTimestamp.diff(deadlineTimestamp);
@@ -31,7 +35,7 @@ const Counter = ({ deadline }) => {
   };
 
   const handleComplete = () => {
-    console.log("hi");
+    dispatch(setFinished());
   };
 
   return (

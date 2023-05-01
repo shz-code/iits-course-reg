@@ -12,6 +12,7 @@ const InputElement = ({ icon, label, ...rest }) => {
         </div>
         <input
           className="px-2 rounded bg-slate-100 w-full py-1 pl-11 text-md placeholder:opacity-75 placeholder:text-stone-400 placeholder:text-sm"
+          // required
           {...rest}
           id={label}
         />
