@@ -1,12 +1,13 @@
 import { Fingerprint, Mail, Phone, User } from "lucide-react";
 import React from "react";
-import InputElement from "./InputElement";
-import TextAreaElement from "./TextAreaElement";
+import InputElement from "./ui/InputElement";
+import TextAreaElement from "./ui/TextAreaElement";
 
 const UserForm = ({ formik }) => {
   console.log();
   return (
     <>
+      <h1 className="text-center font-bold">User Information</h1>
       <div className="student-info">
         {/* bg-[#111827]  */}
         <p className="text-xs text-gray-500">

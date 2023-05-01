@@ -3,10 +3,11 @@ import React from "react";
 const Terms = ({ formik }) => {
   return (
     <>
+      <h1 className="text-center font-bold">Terms and Conditions</h1>
       <p className="text-xs text-gray-500">
         Please read the conditions before applying for the course
       </p>
-      <div className="bg-gray-100 grid gap-2 p-3 rounded-md h-36 overflow-y-scroll tc font-mono text-sm text-slate-600">
+      <div className="bg-gray-100 grid gap-2 p-3 rounded-md h-36 overflow-y-scroll tc font-mono text-sm text-slate-600 my-2">
         <p className="font-bold text-black">
           By enrolling in the course, I agree to the following terms and
           conditions:

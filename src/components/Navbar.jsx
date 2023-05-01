@@ -1,6 +1,7 @@
 import "boxicons";
+import { Loader2 } from "lucide-react";
 import React from "react";
-import { useGetDeadlineQuery } from "../api/apiSlice";
+import { useGetDeadlineQuery } from "../features/api/apiSlice";
 import Counter from "./Counter";
 
 export default function Navbar() {
@@ -28,6 +29,8 @@ export default function Navbar() {
           <div className="submission_deadline">
             <span className="font-bold"> Deadline: </span>{" "}
             {!isLoading && !isError && <Counter deadline={deadline.deadline} />}
+            {isLoading && <Loader2 className="animate-spin" />}
+            {!isLoading && isError && <b className="text-red-500">Error!</b>}
           </div>
         </div>
       </nav>
