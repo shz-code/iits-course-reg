@@ -1,8 +1,9 @@
 {
   "name": "iits-course-reg",
   "private": true,
-  "version": "0.0.0",
+  "version": "0.6.0",
   "type": "module",
+  "author": "Shahidul Alam",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
