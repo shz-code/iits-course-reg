@@ -12,8 +12,19 @@ const apiSlice = createApi({
     getDeadline: builder.query({
       query: () => "deadline",
     }),
+    submitQuiz: builder.mutation({
+      query: (quiz) => ({
+        url: "submitQuiz",
+        method: "POST",
+        body: quiz,
+      }),
+    }),
   }),
 });
 
 export default apiSlice;
-export const { useGetQuizzesQuery, useGetDeadlineQuery } = apiSlice;
+export const {
+  useGetQuizzesQuery,
+  useGetDeadlineQuery,
+  useSubmitQuizMutation,
+} = apiSlice;

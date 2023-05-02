@@ -1,5 +1,6 @@
 import { useFormik } from "formik";
 import { useSelector } from "react-redux";
+import { useSubmitQuizMutation } from "../features/api/apiSlice";
 import formValidation from "../utils/formValidation";
 import CourseDetails from "./CourseDetails";
 import Quizzes from "./Quizzes";
@@ -9,6 +10,8 @@ import Button from "./ui/Button";
 
 const MainBody = () => {
   const { finished } = useSelector((state) => state.submitValidation);
+
+  const [submitQuiz, { isSuccess, isError }] = useSubmitQuizMutation();
 
   const formik = useFormik({
     initialValues: {
@@ -23,8 +26,10 @@ const MainBody = () => {
     validateOnChange: false,
     validateOnBlur: false,
     validate: formValidation,
-    onSubmit: (values) => {
+    onSubmit: async (values) => {
       console.log(values);
+      const res = await submitQuiz(values.quizzes);
+      console.log(res);
     },
   });
 

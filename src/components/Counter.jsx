@@ -39,7 +39,7 @@ const Counter = ({ deadline }) => {
   };
 
   return (
-    <div>
+    <div tabIndex="0" aria-label="Deadline">
       {" "}
       <Countdown
         date={Date.now() + timeDiff}
