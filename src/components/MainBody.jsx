@@ -12,7 +12,7 @@ import Quizzes from "./Quizzes";
 import Terms from "./Terms";
 import UserForm from "./UserForm";
 import Button from "./ui/Button";
-import SubmitModal from "./ui/submitModal";
+import SubmitModal from "./ui/SubmitModal";
 
 const MainBody = () => {
   const [showModal, setShowModal] = useState(false);
