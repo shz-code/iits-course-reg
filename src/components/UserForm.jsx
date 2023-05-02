@@ -27,6 +27,9 @@ const UserForm = ({ formik }) => {
           type="text"
           {...formik.getFieldProps("email")}
         />
+        <p className="text-red-500 font-medium my-2 text-xs">
+          {formik.errors?.email}
+        </p>
         <InputElement
           icon={<Fingerprint size="20" color="white" />}
           label="Your Id"
@@ -38,11 +41,14 @@ const UserForm = ({ formik }) => {
         />
         <InputElement
           icon={<Phone size="20" color="white" />}
-          label="Your Number"
-          placeholder="Enter Your Number"
+          label="Your Phone Number"
+          placeholder="Enter Your Phone Number"
           type="text"
           {...formik.getFieldProps("phone")}
         />
+        <p className="text-red-500 font-medium my-2 text-xs">
+          {formik.errors?.phone}
+        </p>
         <TextAreaElement
           label="Why do you want to do this course? (200 characters)"
           placeholder="Write why you want to do this course in 200 characters"

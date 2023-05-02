@@ -19,6 +19,13 @@ const apiSlice = createApi({
         body: quiz,
       }),
     }),
+    submitForm: builder.mutation({
+      query: (formData) => ({
+        url: "submitForm",
+        method: "POST",
+        body: formData,
+      }),
+    }),
   }),
 });
 
@@ -27,4 +34,5 @@ export const {
   useGetQuizzesQuery,
   useGetDeadlineQuery,
   useSubmitQuizMutation,
+  useSubmitFormMutation,
 } = apiSlice;

@@ -1,5 +1,11 @@
 import { toast } from "react-hot-toast";
 
+function validateEmail(email) {
+  const re =
+    /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
+  return re.test(email);
+}
+
 const formValidation = (values) => {
   const errors = {};
   const { name, email, id, phone, reason, quizzes, tc } = values;
@@ -30,6 +36,19 @@ const formValidation = (values) => {
     toast.error("Please write your reason within 200 characters");
   }
   // ------------------------- Reason Validation ---------------
+  // ------------------------- Email Validation ---------------
+  if (!validateEmail(email)) {
+    errors.email = `Wrong Email Format`;
+    toast.error("Please write your email in appropriate format");
+  }
+  // ------------------------- Email Validation ---------------
+  // ------------------------- Phone Validation ---------------
+  const ckPhone = phone.substr(phone.length - 11, 11);
+  if (ckPhone.length !== 11) {
+    errors.phone = `Wrong Phone Number Format`;
+    toast.error("Please write your phone in appropriate format");
+  }
+  // ------------------------- Phone Validation ---------------
   return errors;
 };
 
