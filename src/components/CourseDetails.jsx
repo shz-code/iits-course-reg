@@ -19,7 +19,12 @@ const CourseDetails = () => {
         </p>
         <p>
           <span className="font-medium text-black">Course outline:</span>{" "}
-          <a href="/" target="_blank" className="text-blue-500 underline">
+          <a
+            href="/course_outline.pdf"
+            file="true"
+            target="_blank"
+            className="text-blue-500 underline"
+          >
             Check course outline
           </a>
         </p>
