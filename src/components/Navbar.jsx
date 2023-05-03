@@ -11,7 +11,7 @@ export default function Navbar() {
     <header className="bg-blue-400 pb-2 shadow-md rounded-b-md">
       <div>
         <div className="page_title bg-blue-500 shadow-sm mb-1 py-1 font-bold font-mono text-lg flex items-center justify-center gap-1">
-          Front-end development with
+          Front-end development using
           <box-icon type="logo" color="yellow" name="javascript"></box-icon>
         </div>
       </div>
