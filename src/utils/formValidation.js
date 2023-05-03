@@ -44,7 +44,7 @@ const formValidation = (values) => {
   // ------------------------- Email Validation ---------------
   // ------------------------- Phone Validation ---------------
   const ckPhone = phone.substr(phone.length - 11, 11);
-  if (ckPhone.length !== 11) {
+  if (ckPhone.length !== 11 || ckPhone[0] !== "0") {
     errors.phone = `Wrong Phone Number Format`;
     toast.error("Please write your phone in appropriate format");
   }
