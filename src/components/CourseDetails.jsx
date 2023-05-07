@@ -30,7 +30,10 @@ const CourseDetails = () => {
         </p>
         <p>
           <span className="font-medium text-black">Course schedule:</span> Every
-          Saturday & Wednesday (Lab 3)
+          Sunday (11.45 AM) & Wednesday (1.10 PM)
+        </p>
+        <p>
+          <span className="font-medium text-black">Number of sections:</span> 1
         </p>
       </div>
     </>
