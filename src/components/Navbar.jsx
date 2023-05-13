@@ -26,8 +26,8 @@ export default function Navbar() {
               />
             </a>
           </div>
-          <div className="submission_deadline">
-            <span className="font-bold"> Deadline: </span>{" "}
+          <div className="submission_deadline flex flex-col items-center justify-center">
+            <span className="font-bold"> Deadline: </span>
             {!isLoading && !isError && <Counter deadline={deadline.deadline} />}
             {isLoading && <Loader2 className="animate-spin" />}
             {!isLoading && isError && <b className="text-red-500">Error!</b>}

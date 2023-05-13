@@ -1,4 +1,4 @@
-import { Loader2 } from "lucide-react";
+import { Ban, Loader2 } from "lucide-react";
 import React from "react";
 import { useSelector } from "react-redux";
 
@@ -14,6 +14,9 @@ disabled:scale-100 disabled:pointer-events-none disabled:opacity-75"
       disabled={!isValid || !status || isLoading}
     >
       {isLoading && <Loader2 className="animate-spin inline mr-2" size={20} />}
+      {(!isValid || !status || isLoading) && (
+        <Ban className="inline mr-2" size={15} />
+      )}
       Submit
     </button>
   );

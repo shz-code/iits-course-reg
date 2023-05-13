@@ -11,7 +11,7 @@ const CourseDetails = () => {
         </p>
         <p>
           <span className="font-medium text-black">Course name:</span> Front-end
-          development using JavaScript with Intermediate concepts.
+          development using JavaScript.
         </p>
         <p>
           <span className="font-medium text-black">Course duration:</span> 1.5

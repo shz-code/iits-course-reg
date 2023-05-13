@@ -19,16 +19,24 @@ const Counter = ({ deadline }) => {
       // Render a countdown
       let content = "";
       if (days) {
-        content += `${days} days `;
+        content += `${days} `;
+        if (days > 1) content += "days ";
+        else content += "day ";
       }
       if (hours) {
-        content += `${hours} hours `;
+        content += `${hours} `;
+        if (hours > 1) content += "hours ";
+        else content += "hour ";
       }
       if (minutes) {
-        content += `${minutes} minutes `;
+        content += `${minutes} `;
+        if (minutes > 1) content += "minutes ";
+        else content += "minute ";
       }
       if (seconds) {
-        content += `${seconds} seconds `;
+        content += `${seconds} `;
+        if (seconds > 1) content += "seconds ";
+        else content += "second ";
       }
       return <span>{content} left</span>;
     }
