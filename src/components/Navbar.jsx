@@ -1,6 +1,7 @@
 import "boxicons";
 import { Loader2 } from "lucide-react";
 import React from "react";
+import Logo from "../assets/images/logo.png";
 import { useGetDeadlineQuery } from "../features/api/apiSlice";
 import Counter from "./Counter";
 
@@ -18,15 +19,9 @@ export default function Navbar() {
       <nav className="md:max-w-[1200px] mx-auto px-2">
         <div className="md:flex md:justify-between text-center md:items-center">
           <div className="logo hidden md:block">
-            <a href="http://cse.iubat.edu/" target="_blank">
-              <img
-                src="https://th.bing.com/th/id/R.9022450cb9bd5c25aa83792341c1d93e?rik=pyPsMUjo7%2fTeLg&riu=http%3a%2f%2fcse.iubat.edu%2fwp-content%2fuploads%2f2019%2f06%2fiubat_cse-logo.png&ehk=EDxgn3M75GwbAI3b1Fwn7FLCfXN4NLEy3HGYtpFFQO8%3d&risl=&pid=ImgRaw&r=0"
-                width={50}
-                alt="CSE Logo"
-              />
-            </a>
+            <img src={Logo} width={50} alt="CSE Logo" />
           </div>
-          <div className="submission_deadline flex flex-col items-center justify-center">
+          <div className="submission_deadline flex flex-col items-center justify-center pointer-events-none">
             <span className="font-bold"> Deadline: </span>
             {!isLoading && !isError && <Counter deadline={deadline.deadline} />}
             {isLoading && <Loader2 className="animate-spin" />}
